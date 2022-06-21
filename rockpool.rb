@@ -5,21 +5,39 @@
 class Rockpool < Formula
   desc "Simple tool to set up a Lagoon instance locally"
   homepage "https://github.com/salsadigitalauorg/rockpool"
-  version "0.4.8"
-  depends_on :linux
+  version "0.4.9"
 
-  on_linux do
+  on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/salsadigitalauorg/rockpool/releases/download/v0.4.8/rockpool-Linux-x86_64.tar.gz"
-      sha256 "5220923cc16c4aaff8ddd988fc6a503d40320d102df3adc46fed6dd019778db7"
+      url "https://github.com/salsadigitalauorg/rockpool/releases/download/v0.4.9/rockpool-Darwin-amd64.tar.gz"
+      sha256 "2e3270426b7af5c859fbcd92ee34965a56d4b2a0b0ea2a278234205994f73ce1"
 
       def install
         bin.install "rockpool"
       end
     end
+    if Hardware::CPU.arm?
+      url "https://github.com/salsadigitalauorg/rockpool/releases/download/v0.4.9/rockpool-Darwin-arm64.tar.gz"
+      sha256 "d6eec01a2a2086838428a33ca13839195d98b0162a5d016cc08352aaa4cba011"
+
+      def install
+        bin.install "rockpool"
+      end
+    end
+  end
+
+  on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/salsadigitalauorg/rockpool/releases/download/v0.4.8/rockpool-Linux-aarch64.tar.gz"
-      sha256 "e96e72a6bd7ffb5f824395ea6052086c00a7c932bc7c9307658cb2c076ddfe52"
+      url "https://github.com/salsadigitalauorg/rockpool/releases/download/v0.4.9/rockpool-Linux-aarch64.tar.gz"
+      sha256 "74ebfd314d054689a68fed37224157d6616dfca9b586133dbff4fc0667bc4d41"
+
+      def install
+        bin.install "rockpool"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/salsadigitalauorg/rockpool/releases/download/v0.4.9/rockpool-Linux-x86_64.tar.gz"
+      sha256 "b9ac7e96d34e7dad0d927fbe448cc34784e271c9c9cc7df1fbd342cbec19a03e"
 
       def install
         bin.install "rockpool"
